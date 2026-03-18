@@ -96,6 +96,9 @@ func convertTextToPDF(inputPath string) (string, func(), error) {
 		lineHeight = 4
 	}
 
+	pageW, _ := pdf.GetPageSize()
+	cellW := pageW - 2*pdfPageMarginMM
+
 	scanner := bufio.NewScanner(f)
 	scanner.Buffer(make([]byte, 0, 64*1024), 1024*1024)
 	lineIndex := 0
@@ -104,8 +107,9 @@ func convertTextToPDF(inputPath string) (string, func(), error) {
 			pdf.AddPage()
 			lineIndex = 0
 		}
-		y := pdfPageMarginMM + lineHeight*float64(lineIndex+1)
-		pdf.Text(pdfPageMarginMM, y, scanner.Text())
+		y := pdfPageMarginMM + lineHeight*float64(lineIndex)
+		pdf.SetXY(pdfPageMarginMM, y)
+		pdf.CellFormat(cellW, lineHeight, scanner.Text(), "", 0, "LM", false, 0, "")
 		lineIndex++
 	}
 	if err := scanner.Err(); err != nil {

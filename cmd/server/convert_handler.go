@@ -29,7 +29,15 @@ func convertHandler(w http.ResponseWriter, r *http.Request) {
 
 	ctx, cancel := convertTimeoutContext(r.Context())
 	defer cancel()
-	outPath, outCleanup, err := convertOfficeToPDF(ctx, inPath)
+
+	kind := detectFileKind(inPath, fh.Filename)
+	var outPath string
+	var outCleanup func()
+	if kind == fileKindText {
+		outPath, outCleanup, err = convertTextToPDF(inPath)
+	} else {
+		outPath, outCleanup, err = convertOfficeToPDF(ctx, inPath)
+	}
 	if err != nil {
 		http.Error(w, "conversion failed: "+err.Error(), http.StatusInternalServerError)
 		return

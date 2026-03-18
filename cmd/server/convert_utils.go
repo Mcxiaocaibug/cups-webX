@@ -10,6 +10,7 @@ import (
 	"time"
 )
 
+
 func convertOfficeToPDF(ctx context.Context, inputPath string) (string, func(), error) {
 	tmpDir, err := os.MkdirTemp("", "convert-")
 	if err != nil {
@@ -18,6 +19,7 @@ func convertOfficeToPDF(ctx context.Context, inputPath string) (string, func(), 
 	cleanup := func() { _ = os.RemoveAll(tmpDir) }
 
 	cmd := exec.CommandContext(ctx, "libreoffice", "--headless", "--convert-to", "pdf", "--outdir", tmpDir, inputPath)
+	cmd.Env = append(os.Environ(), "LANG=zh_CN.UTF-8", "LC_ALL=zh_CN.UTF-8")
 	if out, err := cmd.CombinedOutput(); err != nil {
 		cleanup()
 		return "", nil, fmt.Errorf("conversion failed: %w - %s", err, string(out))
