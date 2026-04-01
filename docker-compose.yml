@@ -1,6 +1,6 @@
 services:
   cups:
-    image: docker.1ms.run/hanxi/cups:latest
+    image: hanxi/cups:latest
     user: root
     environment:
       - CUPSADMIN=${CUPSADMIN}
@@ -14,7 +14,7 @@ services:
     restart: unless-stopped
 
   web:
-    image: docker.1ms.run/hanxi/cups-web:latest
+    image: hanxi/cups-web:latest
     user: root
     environment:
       - SESSION_HASH_KEY=${SESSION_HASH_KEY}
