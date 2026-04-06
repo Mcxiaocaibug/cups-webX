@@ -1,0 +1,31 @@
+.etc/
+.data
+.uploads
+
+bin/
+frontend/dist/
+internal/webui/dist/
+node_modules/
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
+
+# Environment
+.env
+.env.local
+
+# Logs and coverage
+.cache/
+coverage/
+*.log
+
+# Build outputs
+data/
+uploads/
+
+# Go
+vendor/
+
+.aone_copilot/

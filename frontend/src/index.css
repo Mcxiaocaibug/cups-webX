@@ -1,0 +1,230 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+:root {
+  --app-max-width: 1400px;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: #0f172a;
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.24), transparent 28%),
+    radial-gradient(circle at top right, rgba(251, 191, 36, 0.18), transparent 24%),
+    radial-gradient(circle at bottom left, rgba(251, 146, 60, 0.16), transparent 24%),
+    linear-gradient(180deg, #f8fbff 0%, #eff4fb 48%, #eef2f7 100%);
+  background-attachment: fixed;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.18) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.65), transparent 92%);
+  opacity: 0.4;
+}
+
+a {
+  color: inherit;
+}
+
+.app-shell {
+  width: min(var(--app-max-width), calc(100vw - 24px));
+  margin: 0 auto;
+  padding: 18px 0 28px;
+}
+
+.page-shell {
+  width: 100%;
+}
+
+.soft-nav,
+.soft-footer,
+.soft-card,
+.metric-card,
+.soft-list-item,
+.soft-spot {
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow:
+    0 18px 45px rgba(15, 23, 42, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.soft-nav {
+  border-radius: 30px;
+  padding: 18px 22px;
+}
+
+.soft-footer {
+  border-radius: 24px;
+  padding: 14px 18px;
+}
+
+.soft-card {
+  overflow: hidden;
+  border-radius: 28px;
+}
+
+.soft-card > * {
+  position: relative;
+}
+
+.hero-surface {
+  position: relative;
+  overflow: hidden;
+  border-radius: 34px;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.9), transparent 40%),
+    linear-gradient(135deg, rgba(14, 165, 233, 0.15), rgba(251, 191, 36, 0.15) 54%, rgba(255, 255, 255, 0.7));
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+}
+
+.hero-surface::after {
+  content: "";
+  position: absolute;
+  right: -72px;
+  top: -72px;
+  width: 220px;
+  height: 220px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.7), transparent 72%);
+}
+
+.section-kicker {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(15, 23, 42, 0.58);
+}
+
+.dashboard-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.metric-card {
+  border-radius: 24px;
+  padding: 16px 18px;
+}
+
+.metric-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.metric-value {
+  margin-top: 8px;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.15;
+}
+
+.metric-helper {
+  margin-top: 6px;
+  font-size: 0.82rem;
+  color: #64748b;
+}
+
+.soft-dropzone {
+  border-radius: 26px;
+  border: 1.5px dashed rgba(59, 130, 246, 0.28);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(248, 250, 252, 0.94));
+}
+
+.soft-segment {
+  padding: 4px;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 20px;
+  background: rgba(248, 250, 252, 0.72);
+}
+
+.soft-segment label {
+  border-radius: 16px;
+}
+
+.soft-list-item {
+  border-radius: 22px;
+  padding: 14px 16px;
+}
+
+.soft-inline-note {
+  border-radius: 18px;
+  border: 1px solid rgba(251, 191, 36, 0.28);
+  background: rgba(255, 251, 235, 0.88);
+}
+
+.soft-table-tools {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.soft-spot {
+  border-radius: 22px;
+  padding: 14px 16px;
+}
+
+.preview-frame {
+  border-radius: 24px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: rgba(255, 255, 255, 0.68);
+  overflow: hidden;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.app-muted {
+  color: #64748b;
+}
+
+@media (max-width: 640px) {
+  .app-shell {
+    width: min(var(--app-max-width), calc(100vw - 16px));
+    padding-top: 12px;
+  }
+
+  .hero-surface {
+    border-radius: 28px;
+    padding: 22px 20px;
+  }
+
+  .soft-nav {
+    border-radius: 24px;
+    padding: 16px;
+  }
+
+  .soft-card,
+  .metric-card,
+  .soft-list-item,
+  .soft-spot {
+    border-radius: 22px;
+  }
+}

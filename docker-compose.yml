@@ -1,0 +1,28 @@
+services:
+  cups:
+    image: hanxi/cups:latest
+    user: root
+    environment:
+      - CUPSADMIN=${CUPSADMIN}
+      - CUPSPASSWORD=${CUPSPASSWORD}
+    ports:
+      - "631:631"
+    devices:
+      - /dev/bus/usb:/dev/bus/usb
+    volumes:
+      - ./.etc:/etc/cups
+    restart: unless-stopped
+
+  web:
+    image: hanxi/cups-web:latest
+    user: root
+    environment:
+      - CUPS_HOST=cups:631
+    volumes:
+      - ./.data:/data
+      - ./.uploads:/uploads
+    ports:
+      - "1180:8080"
+    depends_on:
+      - cups
+    restart: unless-stopped

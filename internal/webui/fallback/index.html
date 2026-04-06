@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CUPS Web</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background:
+          radial-gradient(circle at top left, #dbeafe, transparent 32%),
+          radial-gradient(circle at bottom right, #fde68a, transparent 28%),
+          #f8fafc;
+        color: #0f172a;
+      }
+
+      main {
+        width: min(640px, calc(100vw - 32px));
+        padding: 32px;
+        border: 1px solid #cbd5e1;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.92);
+        box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+      }
+
+      h1 {
+        margin: 0 0 16px;
+        font-size: 1.75rem;
+      }
+
+      p {
+        margin: 0 0 12px;
+        line-height: 1.6;
+      }
+
+      code {
+        padding: 2px 6px;
+        border-radius: 6px;
+        background: #e2e8f0;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Frontend assets are not embedded yet.</h1>
+      <p>
+        Build the frontend first, then rebuild the Go binary with the embedded
+        frontend tag.
+      </p>
+      <p>Recommended commands:</p>
+      <p><code>make build</code></p>
+      <p>Or manually:</p>
+      <p><code>cd frontend && bun install --frozen-lockfile && bun run build</code></p>
+      <p><code>go build -tags frontend_dist -o bin/cups-web ./cmd/server</code></p>
+    </main>
+  </body>
+</html>
